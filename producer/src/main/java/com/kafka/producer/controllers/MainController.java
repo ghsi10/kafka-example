@@ -18,10 +18,11 @@ public class MainController {
     private static final String TOPIC = "test";
     private static final int NUM_PARTITIONS = 2;
     private static final short REPLICATION = 1;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    public MainController(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     @Bean
     public NewTopic topic1() {
